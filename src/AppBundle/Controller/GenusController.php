@@ -8,6 +8,7 @@ use AppBundle\Entity\Genus;
 use AppBundle\Entity\GenusNote;
 use AppBundle\Entity\GenusScientist;
 use AppBundle\Service\MarkdownTransformer;
+use ArrayObject;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -105,10 +106,15 @@ class GenusController extends Controller
         $recentNotes = $em->getRepository('AppBundle:GenusNote')
             ->findAllRecentNotesForGenus($genus);
 
+        $foodArray = ['shrimp', 'clams', 'lobsters', 'shark'];
+        $food = new ArrayObject($foodArray);
+
+
         return $this->render('genus/show.html.twig', array(
             'genus' => $genus,
             'funFact' => $funFact,
-            'recentNoteCount' => count($recentNotes)
+            'recentNoteCount' => count($recentNotes),
+            'recentlyAte' => $genus->feed($food),
         ));
     }
 
