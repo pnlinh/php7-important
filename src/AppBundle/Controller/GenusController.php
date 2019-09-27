@@ -22,8 +22,13 @@ class GenusController extends Controller
     public function typesExampleAction()
     {
         $genus = new Genus();
-        $genus->setName('4');
-        dump($genus);die;
+        $genus->setName('foo');
+
+        $genus->setFunFact('This is fun');
+        dump($genus->getFunFact());
+
+        $genus->setFunFact(null);
+        dump($genus->getFunFact());die;
     }
 
     /**

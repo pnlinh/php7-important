@@ -96,7 +96,7 @@ class Genus
         return $this->id;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -129,12 +129,12 @@ class Genus
         $this->speciesCount = $speciesCount;
     }
 
-    public function getFunFact()
+    public function getFunFact(): ?string
     {
         return $this->funFact;
     }
 
-    public function setFunFact($funFact)
+    public function setFunFact(?string $funFact)
     {
         $this->funFact = $funFact;
     }
